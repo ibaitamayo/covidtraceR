@@ -1,0 +1,10 @@
+Package: covidtrace
+Type: Package
+Title: Análisis de contactos (Title Case)
+Version: 0.1.0
+Author: SNS-O
+Maintainer: The package maintainer <julian.libreri@gmail.com>
+Description: Este paquete está pensado para permitir la integración con Tableau en el análisis de cotactos.
+License: na
+Encoding: UTF-8
+LazyData: true
