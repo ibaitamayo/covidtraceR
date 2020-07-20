@@ -92,3 +92,4 @@ covidtracer<-function(codare = "D:/R/cmap.Rdata",data = "D:/R/casos_contactos_13
   enlis=mkobj(data,filtrofecha,codare)
   return(htmlwidgets::saveWidget(xare(enlis[[2]],area),file=salida))
 }
+

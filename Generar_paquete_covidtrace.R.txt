@@ -1,0 +1,101 @@
+
+Pasos para generar el paquete desde 0:
+  
+  
+https://vandomed.github.io/build_rpackage.html
+
+Create R Package in 5 Minutes with roxygen2
+Dane Van Domelen
+Initialize project/package in RStudio
+Launch RStudio.
+File → New Project...
+New Directory → R Package
+Type name of package (e.g. “covidtraceR”) under Package name:
+  Choose folder for package files under Create project as subdirectory of:
+  Click Create Project.
+Install roxygen2 and tell R to use it
+install.packages("roxygen2")
+Build → Configure Build Tools...
+In Build Tools panel, check Use devtools package functions if available.
+Click OK.
+Delete NAMESPACE and hello_world files
+In Files panel of RStudio…
+Delete NAMESPACE (we’ll let roxygen2 autogenerate it).
+Delete hello.R in R subfolder.
+Delete hello.Rd in man subfolder.
+Modify DESCRIPTION
+Open DESCRIPTION file.
+Fill in fields with information about your package.
+Use Imports or Depends to list packages that yours uses
+Create .R file for each function
+File → New File → R Script.
+Type your R function.
+Add roxygen2 syntax above it to autogenerate help file.
+First chunk is Title, second is Description.
+Don’t forget @export!
+  E.g. function bmi3 for creating BMI groups…
+#' Create BMI Groups
+#'
+#' Converts continuous BMI variable to BMI groups.
+#'
+#' @param x Numeric vector.
+#'
+#' @return Factor variable.
+#'
+#' @examples
+#' bmi.vals <- rnorm(n = 50, mean = 25, sd = 3)
+*' bmi3(bmi.vals)
+#'
+#' @export
+bmi3 <- function(x) {
+  bmi.groups <- cut(x, breaks = c(0, 25, 30, Inf), right = FALSE)
+  return(bmi.groups)
+}
+File → Save As... “bmi3.R”.
+Create .R file to autogenerate package help file
+File → New File → R Script.
+Use same Title and Description as in DESCRIPTION file.
+Use @import packagename to load functions from any packages you use.
+Something like this:
+  #' BMI Package
+  #'
+  #' A longer description would go here.
+  #'
+  #'
+  #' @docType package
+  #'
+  #' @author Dane Van Domelen \email{vandomed@gmail.com}
+  #'
+  #' @name package1
+  NULL
+Build package, make sure it works
+Build → Check Package (optional, but often useful).
+Build → Clean and Rebuild.
+Verify help files are there and functions work.
+Build → Build Source Package to generate package1_0.1.1.tar.gz file in parent directory.
+Share package
+Upload to GitHub (all the rage).
+Submit to CRAN (going out of style).
+First run through Win-Builder.
+Notes
+Beauty of roxygen2 is simplicity.
+Only edit DESCRIPTION and .R files.
+Don’t touch anything else!
+  Adding C++ code
+Pretty easy with Rcpp package.
+Will cover in future article.
+References
+Eddelbuettel, Dirk. 2013. Seamless R and C++ Integration with Rcpp. New York: Springer. doi:10.1007/978-1-4614-6868-4.
+
+Eddelbuettel, Dirk, and James Joseph Balamuta. 2017. “Extending extitR with extitC++: A Brief Introduction to extitRcpp.” PeerJ Preprints 5 (August): e3188v1. doi:10.7287/peerj.preprints.3188v1.
+
+Eddelbuettel, Dirk, and Romain François. 2011. “Rcpp: Seamless R and C++ Integration.” Journal of Statistical Software 40 (8): 1–18. doi:10.18637/jss.v040.i08.
+
+Wickham, Hadley, Peter Danenberg, and Manuel Eugster. 2017. Roxygen2: In-Line Documentation for R. https://CRAN.R-project.org/package=roxygen2.
+
+
+
+
+
+
+  
